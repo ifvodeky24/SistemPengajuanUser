@@ -9,18 +9,19 @@ class Karyawan extends CI_Controller
         is_login();
         redirect_if_level_not('Manager');
         $this->load->model('Karyawan_model', 'karyawan');
+		$this->load->model('Divisi_model', 'divisi');
     }
 
     public function index()
     {
         $data['karyawan'] = $this->karyawan->get_all();
+
         return $this->template->load('template', 'karyawan/index', $data);
     }
 
     public function create()
     {
-        $this->load->model('Divisi_model', 'divisi');
-        $data['divisi'] = $this->divisi->get_all();
+        $data['divisi'] = $this->divisi->get_divisi();
         return $this->template->load('template', 'karyawan/create', $data);
     }
 
@@ -59,6 +60,7 @@ class Karyawan extends CI_Controller
     public function edit()
     {
         $id_user = $this->uri->segment(3);
+		$data['divisi'] = $this->divisi->get_divisi();
         $data['karyawan'] = $this->karyawan->find($id_user);
         return $this->template->load('template', 'karyawan/edit', $data);
     }

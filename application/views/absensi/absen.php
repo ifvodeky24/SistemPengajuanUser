@@ -6,6 +6,7 @@
             </div>
             <div class="card-body">
             <?php echo form_open_multipart('Absensi/tambah_pengajuan'); ?>
+				<?php var_dump($nip); ?>
                 <div class="card-body">
                   <div class="form-group">
                     <label for="nip">NIP : </label>
@@ -36,9 +37,9 @@
                 <div class="form-group">
                   <label for="exampleSelectBorder">OPD<code></code></label>
                   <select class="custom-select form-control-border" id="exampleSelectBorder" name="OPD">  
-                    <option>Daftar OPD</option>                  
+                    <!-- <option>Daftar OPD</option>                   -->
                     <?php foreach ($jam as $j): ?>
-                    <option value="<?= $j->id_opd ?>"><?= $j->nama_opd ?></option>  
+                    <option value="<?= $j->nama_opd ?>"><?= $j->nama_opd ?></option>  
                     <?php endforeach; ?>
                   </select>
                 </div>

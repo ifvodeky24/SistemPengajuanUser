@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Absen <?= $karyawan->nama ?> bulan <?= bulan($bulan) . ', ' . $tahun ?></title>
+    <title>Pengajuan User <?= $karyawan->nama ?> bulan <?= bulan($bulan) . ', ' . $tahun ?></title>
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
     <link rel="icon" href="<?php echo base_url(); ?>assets/img/icon.png" type="image/gif">
 </head>
@@ -46,11 +46,13 @@
                                 <tbody>
                              
                                 <?php foreach($pengajuan as $i => $p): ?>
-                                    <td><?= ($i+1)?></td>
-                                    <td><?= $p->tgl_pengajuan ?></td>
-                                    <td><?= $p->deskripsi ?></td>
-                                    <td><?= $p->OPD ?></td>
-                                    <td><?= $p->Status ?></td>
+                                    <tr>
+                                        <td><?= ($i+1)?></td>
+                                        <td><?= $p->tgl_pengajuan ?></td>
+                                        <td><?= $p->deskripsi ?></td>
+                                        <td><?= $p->OPD ?></td>
+                                        <td><?= $p->Status ?></td>
+                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
                             </table>

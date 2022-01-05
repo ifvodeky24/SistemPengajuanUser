@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2021 at 05:26 PM
+-- Generation Time: Jan 01, 2022 at 05:31 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -109,7 +109,7 @@ CREATE TABLE `pengajuan` (
   `email` varchar(50) NOT NULL,
   `deskripsi` varchar(250) NOT NULL,
   `surat` varchar(50) NOT NULL,
-  `tgl_pengajuan` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `tgl_pengajuan` date NOT NULL,
   `Status` enum('Menunggu','Diterima','Ditolak') NOT NULL,
   `Bulan` enum('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -119,9 +119,7 @@ CREATE TABLE `pengajuan` (
 --
 
 INSERT INTO `pengajuan` (`id`, `nama`, `nip`, `OPD`, `no_hp`, `email`, `deskripsi`, `surat`, `tgl_pengajuan`, `Status`, `Bulan`) VALUES
-(1, 'Anissa Rahma', 123456789, 'Dinas Sosial', '082213156135', 'anissa.rahma@gmail.com', 'asbdaskcbdkasbkdj', 'asdasasd', '2021-10-26 18:26:59', 'Diterima', 'Oktober'),
-(3, 'Ahmad Fadillah', 123456789, 'Daftar OPD', '', 'syakir.alvaro@gmail.com', 'sds', 'download1.jpg', '2021-12-31 14:37:31', 'Menunggu', 'Januari'),
-(4, 'dsdsd', 123456789, 'Daftar OPD', '', 'syakir.alvaro@gmail.com', 'dsd', 'Technical_Assessment_Android_Developer.pdf', '2021-12-31 14:42:22', 'Menunggu', 'Januari');
+(7, 'Ahmad Fadillah', 123456789, 'Daftar OPD', '', 'raftharealted@gmail.com', 'wew', 'download.jpg', '2022-01-01', 'Menunggu', 'Januari');
 
 -- --------------------------------------------------------
 
@@ -168,12 +166,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `nik`, `nama`, `opd`, `telp`, `email`, `foto`, `divisi`, `username`, `password`, `level`) VALUES
-(1, '', 'Ahmad Fadillah', '', '08139212092', 'ahm.fadil@mail.com', '1634973095.jpg', NULL, 'ahmad', '$2y$13$8nvKA6rSfrk6GadP0O1Y1.qpPCfLFylDQVl/4aq9QJyQEvd5z37DW', 'Manager'),
-(6, '123456789', 'Anissa Rahma', 'Dinas Sosial', '08151231902', 'anissa.rhm31@mail.com', '1640960482.jpg', NULL, 'anissa', '$2y$13$8nvKA6rSfrk6GadP0O1Y1.qpPCfLFylDQVl/4aq9QJyQEvd5z37DW', 'Karyawan'),
+(1, '', 'Ahmad Fadillah', '', '08139212092', 'ahm.fadil@mail.com', '1634973095.jpg', 1, 'ahmad', '$2y$13$8nvKA6rSfrk6GadP0O1Y1.qpPCfLFylDQVl/4aq9QJyQEvd5z37DW', 'Manager'),
+(6, '123456789', 'Anissa Rahma', 'Dinas Sosial', '08151231902', 'anissa.rhm31@mail.com', '1641008061.jpg', 1, 'anissa', '$2y$13$8nvKA6rSfrk6GadP0O1Y1.qpPCfLFylDQVl/4aq9QJyQEvd5z37DW', 'Karyawan'),
 (8, '8931289124891', 'Manager 1', '', '', '', 'no-foto.png', NULL, 'manager_1', '$2y$10$XtMY01KEOd5I065s8Exs0OcQ373RvRNG1JznORr6TmmBNWnZ3vjjK', 'Manager'),
 (9, '1231231238900', 'Manager 2', '', '', '', 'no-foto.png', NULL, 'manager_2', '$2y$10$iJWUOXDznGEmxo.bqnhtmeFL51jN5130LfDlKg8VROfoEmlgC.cFW', 'Manager'),
 (10, '908121310291', 'Manager 3', '', '', '', 'no-foto.png', NULL, 'manager_3', '$2y$10$uGsLvgl.6ji2iZ7tWkNvPelTwZdLQ6QA81Yawa20wsLairCXqV8BO', 'Manager'),
-(11, '123801204012', 'Manager 4', '', '', '', 'no-foto.png', NULL, 'master_4', '$2y$10$Kot81WNqrho4WlcYI13kT.Y5V2sMg1ZSAXcITrp8cj3dqHpbl4vrS', 'Manager');
+(11, '123801204012', 'Manager 4', '', '', '', 'no-foto.png', NULL, 'master_4', '$2y$10$Kot81WNqrho4WlcYI13kT.Y5V2sMg1ZSAXcITrp8cj3dqHpbl4vrS', 'Manager'),
+(14, '23122323243434', 'ssfsfdfd', '', '32323', 'bobi@gmail.com', 'no-foto.png', 1, 'bobi', '$2y$10$FJ16hyW0OJap6THgliBlTOCX9Tl7reHRbUyAEzPs4mwe5es4qJ9tG', 'Karyawan');
 
 --
 -- Indexes for dumped tables
@@ -241,7 +240,7 @@ ALTER TABLE `opd`
 -- AUTO_INCREMENT for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `status`
@@ -253,7 +252,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_user` smallint(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

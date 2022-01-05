@@ -72,7 +72,7 @@
                     <tbody> 
                         <?php foreach ($pengajuan as $p): ?>                       
                         <tr>
-                            <td><?= $p->tgl_pengajuan ?></td>
+                            <td><?= date("d-m-Y",  strtotime($p->tgl_pengajuan)) ?></td>
                             <td><?= $p->deskripsi ?></td>
                             <td><?= $p->OPD ?></td>
                             <td><?= $p->Status ?></td>

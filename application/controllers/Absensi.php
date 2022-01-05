@@ -37,7 +37,7 @@ class Absensi extends CI_Controller
     public function detail_absensi()
     {
         $data = $this->detail_data_absen();
-        $data['pengajuan'] = $this->pengajuan->get_all();
+        // $data['pengajuan'] = $this->pengajuan->get_all();
         return $this->template->load('template', 'absensi/detail', $data);
     }
 
@@ -118,7 +118,6 @@ class Absensi extends CI_Controller
 
         $level = $this->session->level;
         $nip = $this->session->nip;
-       
 
         $data['karyawan'] = $this->karyawan->find($id_user);
         $data['absen'] = $this->absensi->get_absen($id_user, $bulan, $tahun);
@@ -128,7 +127,8 @@ class Absensi extends CI_Controller
         if($level == 'Manager'){
             $data['pengajuan'] = $this->pengajuan->get_all();
         } else {
-            $data['pengajuan'] = $this->pengajuan->find($nip);
+            // var_dump($bulan, $tahun);
+            $data['pengajuan'] = $this->pengajuan->find($nip, $bulan, $tahun);
         }
         
         $data['bulan'] = $bulan;
@@ -161,7 +161,8 @@ class Absensi extends CI_Controller
             $deskripsi = $this->input->post('deskripsi');
             $OPD = $this->input->post('OPD');
             $surat = $surat;
-            $Status = 'Menunggu';
+            $tgl = date('y-m-d');
+            $status = 'Menunggu';
 
             $data = [
                 'nip' => $nip,
@@ -170,7 +171,8 @@ class Absensi extends CI_Controller
                 'email' => $email,
                 'deskripsi' => $deskripsi,
                 'surat' => $surat,
-                'Status' => $Status,
+                'tgl_pengajuan' => $tgl,
+                'Status' => $status,
             ];
             $this->db->insert('pengajuan', $data);
             redirect('absensi/detail_absensi');

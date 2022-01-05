@@ -3,6 +3,17 @@
         <div class="card">
             <div class="card-header d-block">
                 <h4 class="card-title float-left">Total Pengajuan</h4>
+				<div class="col-xs-12 col-sm-6 ml-auto text-right mb-2">
+					<div class="dropdown d-inline">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="droprop-action" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-print"></i>
+							Cetak Laporan
+						</button>
+						<div class="dropdown-menu" aria-labelledby="droprop-action">
+							<a href="<?= base_url('jam/export_pdf_admin/') ?>" class="dropdown-item" target="_blank"><i class="fa fa-file-pdf-o"></i> PDF</a>
+						</div>
+					</div>
+				</div>
                 <div class="d-inline ml-auto float-right">
                     <!-- <a href="<?= base_url('karyawan/create') ?>" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Tambah</a> -->
                 </div>
@@ -14,7 +25,7 @@
                             <th class='disabled'>id</th>
                             <th>OPD</th>
                             <th width="30%">Tanggal Pengajuan</th>
-                            <th>Stauts Pengajuan</th>
+                            <th>Status Pengajuan</th>
                             <th>Aksi</th>
                             <!-- <th></th> -->
                         </thead>

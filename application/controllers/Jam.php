@@ -100,15 +100,15 @@ class Jam extends CI_Controller
             $isi = "Pengajuan telah ".$Status;
             $header = "From: K1dd13";
 
+            var_dump(mail($untuk, $judul, $isi, $header));
+
             if(mail($untuk, $judul, $isi, $header)) { redirect('jam?send=Berhasil'); }
             else { redirect('jam?send=Gagal'); }
 
-            // $this->send_notif($email, $Status);
+            $this->send_notif($email, $Status);
 
             redirect('jam');
-
         }
-        
     }
 
     public function send_notif($mail, $stats)
@@ -128,7 +128,7 @@ class Jam extends CI_Controller
         $this->email->initialize($config);
 
         $this->email->from('w.kuliah654@gmail.com');
-        $this->email->to('wandagamer654@gmail.com');
+        $this->email->to($mail);
         // $this->email->cc('another@another-example.com');
         // $this->email->bcc('them@their-example.com');
 
@@ -139,6 +139,19 @@ class Jam extends CI_Controller
         // if($this->email->send()) { redirect('jam?send=Berhasil'); }
         // else { redirect('jam?send=Gagal'); }
     }
+
+	public function export_pdf_admin()
+	{
+		$data = $this->detail_data_absen();
+		$this->load->view('print_pengajuan_admin', $data);
+	}
+
+	private function detail_data_absen()
+	{
+		$data['pengajuan'] = $this->pengajuan->get_all();
+
+		return $data;
+	}
 }
 
 

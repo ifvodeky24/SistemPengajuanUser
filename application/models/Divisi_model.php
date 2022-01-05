@@ -44,6 +44,12 @@ class Divisi_model extends CI_Model
         $result = $this->db->delete('pengajuan');
         return $result;
     }
+
+	public function get_divisi()
+	{
+		$result = $this->db->get('divisi');
+		return $result->result();
+	}
 }
 
 

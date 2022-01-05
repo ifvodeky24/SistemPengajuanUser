@@ -8,11 +8,13 @@ class User extends CI_Controller
         parent::__construct();
         is_login();
         $this->load->model('User_model', 'user');
+		$this->load->model('Divisi_model', 'divisi');
     }
 
     public function index()
     {
         $id_user = $this->session->id_user;
+		$data['divisi'] = $this->divisi->get_divisi();
         $data['user'] = $this->user->find_by('id_user', $id_user, true);
         return $this->template->load('template', 'edit_profil', $data);
     }
@@ -21,7 +23,6 @@ class User extends CI_Controller
     {
         $post = $this->input->post();
         $data = [
-            'nik' => $post['nik'],
             'nama' => $post['nama'],
             'telp' => $post['telp'],
             'divisi' => $post['divisi'],

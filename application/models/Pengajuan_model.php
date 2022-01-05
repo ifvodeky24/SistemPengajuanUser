@@ -8,6 +8,7 @@ class Pengajuan_model extends CI_Model
     $result = $this->db->get('pengajuan');
     return $result->result();
   }
+  
   public function get_stat()
   {
     $result = $this->db->get('status');
@@ -70,10 +71,14 @@ class Pengajuan_model extends CI_Model
     $this->db->delete($table);
   }
 
-  public function find($nip)
+  public function find($nip, $bulan, $tahun)
     {
+        $this->db->select("DATE_FORMAT(a.tgl_pengajuan, '%d-%m-%Y') AS tgl_pengajuan, a.nama, a.deskripsi, a.OPD, a.Status, a.surat, a.nip");
         $this->db->where('nip', $nip);
-        $result = $this->db->get('pengajuan');
+        $this->db->where("DATE_FORMAT(tgl_pengajuan, '%m') = ", $bulan);
+        $this->db->where("DATE_FORMAT(tgl_pengajuan, '%Y') =", $tahun);
+        $result = $this->db->get('pengajuan a');
+        // var_dump($result->result());
         return $result->result();
     }
 }
