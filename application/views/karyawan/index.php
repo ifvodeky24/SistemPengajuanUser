@@ -28,8 +28,8 @@
                                             </div>
                                             <div class="col-8 pl-1 mt-3">
                                                 <span class="font-weight-bold"><?= $k->nama ?></span> <br>
-                                                <span class="text-muted"><?=$k->opd ?></span>
-												<span class="text-muted"><?= $k->nama_divisi ?></span>
+                                                <span class="text-muted">OPD : <?=$k->opd ?></span> <br>
+												<span class="text-muted">Divisi : <?= $k->nama_divisi ?></span>
                                             </div>
                                         </div>
                                     </td>
