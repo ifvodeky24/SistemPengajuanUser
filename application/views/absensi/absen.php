@@ -6,7 +6,6 @@
             </div>
             <div class="card-body">
             <?php echo form_open_multipart('Absensi/tambah_pengajuan'); ?>
-				<?php var_dump($nip); ?>
                 <div class="card-body">
                   <div class="form-group">
                     <label for="nip">NIP : </label>

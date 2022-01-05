@@ -155,6 +155,7 @@ class Absensi extends CI_Controller
             // get data upload
             $surat = $this->upload->data();
             $surat = $surat['file_name'];
+
             $nip = $this->session->nip;
             $nama = $this->input->post('nama');
             $email = $this->input->post('email');
@@ -165,8 +166,8 @@ class Absensi extends CI_Controller
             $status = 'Menunggu';
 
             $data = [
-                'nip' => $nip,
                 'nama' => $nama,
+				'nip' => $nip,
                 'OPD' => $OPD,
                 'email' => $email,
                 'deskripsi' => $deskripsi,
@@ -174,7 +175,8 @@ class Absensi extends CI_Controller
                 'tgl_pengajuan' => $tgl,
                 'Status' => $status,
             ];
-            $this->db->insert('pengajuan', $data);
+//            $this->db->insert('pengajuan', $data);
+            $this->absensi->insert_data($data);
             redirect('absensi/detail_absensi');
         }
     }
